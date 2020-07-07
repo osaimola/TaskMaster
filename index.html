@@ -8,9 +8,41 @@
     <meta name="author" content="Osa" />
 
     <link rel="stylesheet" href="css/reset.css" />
+    <script src="js/scripts.js" type="text/javascript" defer></script>
     <!-- <link rel="stylesheet" href="css/styles.css" /> -->
-    <!-- <link rel="JavaScript" href="js/scripts.js" defer /> -->
   </head>
 
-  <body></body>
+  <body>
+    <!-- NEW TODO LIST AREA -->
+    <div class="create-todo">
+      <h2>Create a new Task</h2>
+      <label for="newtask">Add a new Task:</label>
+      <input
+        placeholder="What Would you like to do?"
+        type="text"
+        name="newtaskfield"
+        id="newtaskfield"
+      />
+      <button id="submittask">Create To Do</button>
+    </div>
+
+    <!-- ACTIVE TODO LIST AREA -->
+    <div class="active-todo">
+      <h2>Active Tasks</h2>
+      <ul id="activetodolist">
+        <!-- 
+            <li>
+          <input type="checkbox" name="vehicle1" value="vehicle1" />
+          <label for="vehicle1">Do something cool</label><br />
+        </li>
+    -->
+      </ul>
+    </div>
+
+    <!-- COMPLETED TODO LIST AREA-->
+    <div class="completed-todo">
+      <h2>Completed Task</h2>
+      <ul id="completedtodolist"></ul>
+    </div>
+  </body>
 </html>
