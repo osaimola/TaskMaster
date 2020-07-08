@@ -1,8 +1,8 @@
 const inputField = document.getElementById("newtaskfield");
 const submitButton = document.getElementById("submittask");
-const pendingToDoList = document.querySelector("body>.pending-todo>ul");
-const activeToDoList = document.querySelector("body>.active-todo>ul");
-const completedToDoList = document.querySelector("body>.completed-todo>ul");
+const pendingToDoList = document.querySelector(".pending-todo>ul");
+const activeToDoList = document.querySelector(".active-todo>ul");
+const completedToDoList = document.querySelector(".completed-todo>ul");
 // dictionary will store {"todo item" : [start time, end time, last edited time]}
 const todos = {};
 
@@ -27,20 +27,24 @@ function addPendingToDo(event) {
   pendingTaskContent.innerText = userInput;
 
   let startTaskButton = document.createElement("button");
-  startTaskButton.addEventListener("click", () => {
-    createToDo(event, userInput);
-  });
+
   startTaskButton.innerText = "Start Task";
 
   let newPendingItem = document.createElement("li");
   newPendingItem.appendChild(pendingTaskContent);
   newPendingItem.appendChild(startTaskButton);
 
+  startTaskButton.addEventListener("click", () => {
+    createToDo(event, newPendingItem);
+  });
+
   pendingToDoList.appendChild(newPendingItem);
 }
 
 // Get user input from the new task form and create a new TO DO ITEM
-function createToDo(event, userInput) {
+function createToDo(event, element) {
+  let userInput = element.innerText;
+  pendingToDoList.removeChild(element);
   todos[userInput] = [new Date()];
 
   // create a new list item

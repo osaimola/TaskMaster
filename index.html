@@ -3,60 +3,77 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>To Do Lists</title>
+    <title>TaskMaster</title>
     <meta name="description" content="Productivity hacker with To Do Lists." />
     <meta name="author" content="Osa" />
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- add fonts from Gooogle -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="js/scripts.js" defer></script>
-    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
   </head>
 
   <body>
-    <h1>Taskmaster</h1>
-    <!-- NEW TODO LIST AREA -->
-    <div class="create-todo">
-      <h2>Create a new Task</h2>
-      <label for="newtaskfield">Add a new Task:</label>
-      <input
-        placeholder="What Would you like to do?"
-        type="text"
-        name="newtaskfield"
-        id="newtaskfield"
-      />
-      <button id="submittask">Create To Do</button>
-    </div>
+    <div id="content">
+      <header>
+        <h1>TaskMaster</h1>
+      </header>
 
-    <!-- PENDING TODO LIST AREA -->
-    <div class="pending-todo">
-      <h2>Pending Tasks</h2>
-      <ul id="pendingtodolist">
-        <!-- 
+      <main>
+        <!-- NEW TODO LIST AREA -->
+        <div>
+          <div class="create-todo">
+            <h2>Create a new Task</h2>
+            <label for="newtaskfield">Add a new Task</label><br />
+            <input
+              placeholder="What Would you like to do?"
+              type="text"
+              name="newtaskfield"
+              id="newtaskfield"
+            />
+            <br />
+            <button id="submittask">Create To Do</button>
+          </div>
+
+          <!-- PENDING TODO LIST AREA -->
+          <div class="pending-todo">
+            <h2>Pending Tasks</h2>
+            <ul id="pendingtodolist">
+              <!-- 
             <li>
           <input type="checkbox" name="vehicle1" value="vehicle1" />
           <label for="vehicle1">Do something cool</label><br />
         </li>
     -->
-      </ul>
-    </div>
+            </ul>
+          </div>
+        </div>
 
-    <!-- ACTIVE TODO LIST AREA -->
-    <div class="active-todo">
-      <h2>Active Tasks</h2>
-      <ul id="activetodolist">
-        <!-- 
+        <!-- ACTIVE TODO LIST AREA -->
+        <div class="active-todo">
+          <h2>Active Tasks</h2>
+          <ul id="activetodolist">
+            <!-- 
             <li>
           <input type="checkbox" name="vehicle1" value="vehicle1" />
           <label for="vehicle1">Do something cool</label><br />
         </li>
     -->
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <!-- COMPLETED TODO LIST AREA-->
-    <div class="completed-todo">
-      <h2>Completed Task</h2>
-      <ul id="completedtodolist"></ul>
+        <!-- COMPLETED TODO LIST AREA-->
+        <div class="completed-todo">
+          <h2>Completed Task</h2>
+          <ul id="completedtodolist"></ul>
+        </div>
+      </main>
     </div>
   </body>
 </html>
