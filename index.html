@@ -8,15 +8,16 @@
     <meta name="author" content="Osa" />
 
     <link rel="stylesheet" href="css/reset.css" />
-    <script src="js/scripts.js" type="text/javascript" defer></script>
+    <script src="js/scripts.js" defer></script>
     <!-- <link rel="stylesheet" href="css/styles.css" /> -->
   </head>
 
   <body>
+    <h1>Taskmaster</h1>
     <!-- NEW TODO LIST AREA -->
     <div class="create-todo">
       <h2>Create a new Task</h2>
-      <label for="newtask">Add a new Task:</label>
+      <label for="newtaskfield">Add a new Task:</label>
       <input
         placeholder="What Would you like to do?"
         type="text"
@@ -24,6 +25,19 @@
         id="newtaskfield"
       />
       <button id="submittask">Create To Do</button>
+    </div>
+
+    <!-- PENDING TODO LIST AREA -->
+    <div class="pending-todo">
+      <h2>Pending Tasks</h2>
+      <ul id="pendingtodolist">
+        <!-- 
+            <li>
+          <input type="checkbox" name="vehicle1" value="vehicle1" />
+          <label for="vehicle1">Do something cool</label><br />
+        </li>
+    -->
+      </ul>
     </div>
 
     <!-- ACTIVE TODO LIST AREA -->
