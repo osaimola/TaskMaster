@@ -27,7 +27,6 @@ function addPendingToDo(event) {
   pendingTaskContent.innerText = userInput;
 
   let startTaskButton = document.createElement("button");
-
   startTaskButton.innerText = "Start Task";
 
   let newPendingItem = document.createElement("li");
@@ -35,21 +34,25 @@ function addPendingToDo(event) {
   newPendingItem.appendChild(startTaskButton);
 
   startTaskButton.addEventListener("click", () => {
-    createToDo(event, newPendingItem);
+    startToDo(event, newPendingItem);
   });
 
   pendingToDoList.appendChild(newPendingItem);
 }
 
 // Get user input from the new task form and create a new TO DO ITEM
-function createToDo(event, element) {
-  let userInput = element.innerText;
+function startToDo(event, element) {
+  let userInput = element.querySelector("p").innerText;
   pendingToDoList.removeChild(element);
   todos[userInput] = [new Date()];
 
-  // create a new list item
-  let newItem = document.createElement("li");
+  // create a new wrapper div for this todo item
+  let newItem = document.createElement("div");
   newItem.setAttribute("id", userInput);
+  newItem.setAttribute("class", "active-item");
+
+  // create an inner div for the checkbox
+  let newCheckDiv = document.createElement("div");
 
   // create a checklist for this item
   let newInput = document.createElement("input");
@@ -60,20 +63,35 @@ function createToDo(event, element) {
   newLabel.setAttribute("for", userInput);
   newLabel.innerHTML = userInput;
 
-  // create additional info elements
-  let newStartTime = document.createElement("p");
-  newStartTime.innerText = todos[userInput][0].toLocaleString();
-  let lineBreak = document.createElement("br");
-
-  // add the checlist to the created item
-  newItem.appendChild(newInput);
-  newItem.appendChild(newLabel);
-  newItem.appendChild(lineBreak);
-  newItem.appendChild(newStartTime);
-
-  newItem.addEventListener("click", () => {
+  // insert the checklist into the checkbox div and enable completions on Click
+  newCheckDiv.appendChild(newInput);
+  newCheckDiv.appendChild(newLabel);
+  newCheckDiv.addEventListener("click", () => {
     completeToDo(event, newItem);
   });
+
+  // create timestamp div for this todo item and insert the starttime
+  let newTimeStamp = document.createElement("div");
+  newTimeStamp.setAttribute("class", "timestamp");
+  let newStartTime = document.createElement("p");
+  newStartTime.innerText = "Start: " + todos[userInput][0].toLocaleString();
+  newTimeStamp.appendChild(newStartTime);
+
+  // make a delete button
+  let newDeleteButton = document.createElement("button");
+  newDeleteButton.setAttribute("class", "deletebutton");
+  newDeleteButton.innerText = "X";
+  newDeleteButton.addEventListener("click", () => {
+    deleteToDo(event, newItem);
+  });
+
+  // make an edit button. Change the input text and add a last edited timestamp
+  //
+
+  // add the checlist to the created item
+  newItem.appendChild(newCheckDiv);
+  newItem.appendChild(newTimeStamp);
+  newItem.appendChild(newDeleteButton);
 
   // add child to the active to dos
   activeToDoList.appendChild(newItem);
@@ -92,4 +110,11 @@ function completeToDo(event, element) {
 
   completedToDoList.appendChild(element);
   element.appendChild(newEndTime);
+}
+
+function deleteToDo(event, element) {
+  // delete the entry of this element in the todos dictionary and delete element from page
+  delete todos[element.getAttribute("id")];
+  let parentOfThis = element.parentNode;
+  parentOfThis.removeChild(element);
 }

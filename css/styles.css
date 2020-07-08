@@ -33,17 +33,24 @@ button:focus {
   width: 1080px;
   height: 100vh;
   display: grid;
-  grid-template-rows: 15% 1fr;
+  grid-template-rows: 10% 1fr;
 }
 
 h1 {
   font-size: xx-large;
   font-weight: bold;
+  color: #666666;
 }
 
 h2 {
   font-size: large;
   font-weight: bold;
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666666;
 }
 
 /* Header Syles */
@@ -55,18 +62,18 @@ header {
 /* Main Styles */
 main {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  /*see more about grid minmax here: https://www.hongkiat.com/blog/css-grid-layout-minmax/*/
+  grid-template-rows: minmax(28%, 35%) minmax(28%, 30%) 1fr;
   grid-template-columns: 1fr;
 }
 
 /* Create AND Pending Task Styling */
 main > div:nth-of-type(1) {
   text-align: center;
+  margin: 0 20px;
   padding: 0 4px;
-}
-
-main > div > div > h2 {
-  margin-bottom: 10px;
+  overflow: scroll;
+  border-bottom: 1px solid rgb(185, 184, 184);
 }
 
 /* Create todo styling*/
@@ -124,7 +131,7 @@ main > div > div > button:focus {
 
 .pending-todo > ul > li > button:hover {
   padding: 6px;
-  background-color: rgb(214, 214, 214);
+  background-color: #f0f0f0;
   color: #53c653;
   font-weight: 500;
   border-radius: 5px;
@@ -141,13 +148,84 @@ main > div > div > button:focus {
 /* Active Task Styling */
 main > div:nth-of-type(2) {
   text-align: center;
+  margin: 0 20px;
+  margin-top: 10px;
   padding: 0 4px;
-  background-color: darkgrey;
+  overflow: scroll;
+  border-bottom: 1px solid rgb(185, 184, 184);
+}
+
+/* Active Task Item Styling*/
+#activetodolist > .active-item {
+  margin-bottom: 20px;
+}
+
+/* Completed Task Styling */
+main > div:nth-of-type(3) {
+  text-align: center;
+  margin: 0 20px;
+  margin-top: 10px;
+  padding: 0 4px;
+  overflow: scroll;
+}
+
+/* Timestamp Styling*/
+.timestamp {
+  border: 1px solid grey;
+  color: grey;
+  font-weight: 500;
+  font-size: small;
+  width: fit-content;
+  padding: 3px;
+  border-radius: 3px;
+  margin: 5px auto 0 auto;
+}
+
+/* Delete  to do button*/
+.deletebutton {
+  background-color: #d9534f;
+  color: white;
+  border-radius: 5px;
+  padding: 6px;
+  border: 1px solid grey;
+  margin-top: 5px;
+}
+
+.deletebutton:hover {
+  color: #d9534f;
+  background-color: #f0f0f0;
+}
+
+.deletebutton:focus {
+  color: #d9534f;
+  background-color: #bbbbbb;
+  border: 1px solid black;
+}
+
+/* Edit todo button */
+.editbutton {
+  background-color: #5bc0de;
+  color: white;
+  border-radius: 5px;
+  padding: 6px;
+  border: 1px solid grey;
+}
+
+.editbutton:hover {
+  color: #5bc0de;
+  background-color: #f0f0f0;
+}
+
+.editbutton:focus {
+  color: #34778b;
+  background-color: #bbbbbb;
+  border: 1px solid black;
 }
 
 /* Desktop Display */
 @media only screen and (min-device-width: 600px) {
   #content {
+    grid-template-rows: 15% 1fr;
   }
 
   /* Main Styles */
