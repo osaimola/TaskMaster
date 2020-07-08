@@ -8,7 +8,7 @@ const todos = {};
 
 // APPENDING A CHILD THAT EXISTS UNDER ONE PARENT TO ANOTHER PARENT SHOULD MOVE IT TO THe NEW PARENT
 
-submitButton.addEventListener("click", createToDo);
+submitButton.addEventListener("click", addPendingToDo);
 
 // GEt user input from the new task form and create a new Pending to do
 function addPendingToDo(event) {
@@ -22,21 +22,25 @@ function addPendingToDo(event) {
   }
 
   inputField.value = null;
+
+  let pendingTaskContent = document.createElement("p");
+  pendingTaskContent.innerText = userInput;
+
+  let startTaskButton = document.createElement("button");
+  startTaskButton.addEventListener("click", () => {
+    createToDo(event, userInput);
+  });
+  startTaskButton.innerText = "Start Task";
+
+  let newPendingItem = document.createElement("li");
+  newPendingItem.appendChild(pendingTaskContent);
+  newPendingItem.appendChild(startTaskButton);
+
+  pendingToDoList.appendChild(newPendingItem);
 }
 
 // Get user input from the new task form and create a new TO DO ITEM
 function createToDo(event, userInput) {
-  event.preventDefault();
-
-  let userInput = inputField.value.trim();
-  // TODO : check if input exists in todos and prevent duplicate items from being added
-  if (userInput === "") {
-    // TODO : provide visual feedback about bad input
-    return;
-  }
-
-  inputField.value = null;
-
   todos[userInput] = [new Date()];
 
   // create a new list item
