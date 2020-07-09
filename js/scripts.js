@@ -1,4 +1,5 @@
 const inputField = document.getElementById("newtaskfield");
+const estimateField = document.getElementById("estimatefield");
 const submitButton = document.getElementById("submittask");
 const pendingToDoList = document.querySelector(".pending-todo>ul");
 const activeToDoList = document.querySelector("#activetodolist");
@@ -15,6 +16,7 @@ function addPendingToDo(event) {
   event.preventDefault();
 
   let userInput = inputField.value.trim();
+  let userEstimate = estimateField.value.trim();
   // TODO : check if input exists in todos and prevent duplicate items from being added
   if (userInput === "" || userInput in todos) {
     // TODO : provide visual feedback about bad input
@@ -22,7 +24,8 @@ function addPendingToDo(event) {
   }
 
   inputField.value = null;
-  todos[userInput] = [0, 0, 0];
+  estimateField.value = null;
+  todos[userInput] = [0, 0, formatEstimate(userEstimate)];
 
   let pendingTaskContent = document.createElement("p");
   pendingTaskContent.innerText = userInput;
@@ -107,6 +110,10 @@ function completeToDo(event, element) {
   let newEndTime = document.createElement("p");
   newEndTime.innerText = "End: " + toDoEnded.toLocaleString();
 
+  // add the final timestamp evaluation
+  let newTimeEvaluation = document.createElement("p");
+  newTimeEvaluation.innerText = compareTime(todos[elementName]);
+
   // make a new checkdiv with no event listener
   // set the input.checked to true and prevent unchecking
   let replacementCheckDiv = createCheckDiv(elementName);
@@ -127,7 +134,10 @@ function completeToDo(event, element) {
   editButton.parentNode.removeChild(editButton);
 
   completedToDoList.appendChild(element);
+
+  // update timestamp information
   element.querySelector(".timestamp").appendChild(newEndTime);
+  element.querySelector(".timestamp").appendChild(newTimeEvaluation);
 }
 
 // Delete tasks
@@ -208,9 +218,49 @@ function editTask(event, element) {
 }
 
 // handle estimate entries.
-// return false if entry is invalid
-// return true and add formatted entry to todos dictionary if entry is valid.
-function handleEstimates(userEstimate) {
-  // if valid add to todos and return true
+// return No estimare if entry is invalid
+// return formatted entry  if entry is valid.
+function formatEstimate(userEstimate) {
   // if invalid, return false
+  if (isNaN(parseFloat(userEstimate))) {
+    // TODO : not a valid entry. display warning that estimate not set.
+    return "No estimate";
+  }
+  // if valid return formatted estimate
+  else {
+    // round up to the nearest .25
+    let userFloat = parseFloat(userEstimate);
+    let userInt;
+
+    // prevent parseInt(.[number]) = NaN errors
+    if (userFloat < 1) {
+      userInt = 0;
+    } else {
+      userInt = parseInt(userEstimate);
+    }
+
+    let roundingFactor; // we will use this to round up after the decimal
+
+    if (userFloat % 1 < 0.25) {
+      roundingFactor = 0.25;
+    } else if (userFloat % 1 < 0.5) {
+      roundingFactor = 0.5;
+    } else if (userFloat % 1 < 0.75) {
+      roundingFactor = 0.75;
+    } else {
+      roundingFactor = 1;
+    }
+
+    //return formatted user estimate
+    return userInt + roundingFactor;
+  }
+}
+
+// takes a timestamp and returns the comparison between estimated time and actual time taken
+function compareTime(timestamp) {
+  // caluclate time taken in milliseconds and then convert to .25, .5, .75, .0 hour scale
+  let timeTaken = timestamp[1] - timestamp[0];
+  let formattedTimeTaken = Math.ceil(timeTaken / 60000 / 15) * 0.25;
+
+  return `Estimate: ${timestamp[2]}, Actual time: ${formattedTimeTaken}`;
 }
