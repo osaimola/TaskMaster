@@ -228,6 +228,59 @@ main > div:nth-of-type(3) {
   border: 1px solid black;
 }
 
+/* Warning message styling */
+
+.warning {
+  position: absolute;
+  background-color: #f7e1aa;
+  display: flex;
+  justify-content: space-around;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  padding: 8px 20px;
+  border-radius: 10px;
+}
+
+.warning strong {
+  font-weight: bold;
+  font-size: large;
+  color: #916425;
+  margin-right: 10px;
+}
+
+.warning p {
+  font-weight: 500;
+  color: #916425;
+}
+
+/* error message styling */
+
+.error {
+  position: absolute;
+  background-color: #fda6a0;
+  display: flex;
+  justify-content: space-around;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  padding: 8px 20px;
+  border-radius: 10px;
+}
+
+.error strong {
+  font-weight: 700;
+  font-size: large;
+  color: #8a302c;
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+
+.error p {
+  font-weight: 500;
+  color: #8a302c;
+}
+
 /* Desktop Display */
 @media only screen and (min-device-width: 600px) {
   #content {

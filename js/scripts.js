@@ -20,6 +20,7 @@ function addPendingToDo(event) {
   // TODO : check if input exists in todos and prevent duplicate items from being added
   if (userInput === "" || userInput in todos) {
     // TODO : provide visual feedback about bad input
+    showError("Only unique names are allowed for tasks. Please try again.");
     return;
   }
 
@@ -175,12 +176,14 @@ function editTask(event, element) {
 
   if (newName === null) {
     //ignore if a null value is entered
+    showError("Empty names are not allowed.");
   } else {
     newName = newName.trim();
     let oldName = element.getAttribute("id");
     // if name is not any different or already exists as another task or empty, ignore
     if (newName == "" || newName == oldName || newName in todos) {
-      // TODO : add an error and display
+      // display an error if bad vale allowed
+      showError("Only new and unique names are allowed. Please try again.");
     } else {
       // rename the task entry in the todos dictionary
       todos[newName] = todos[oldName];
@@ -224,6 +227,7 @@ function formatEstimate(userEstimate) {
   // if invalid, return false
   if (isNaN(parseFloat(userEstimate))) {
     // TODO : not a valid entry. display warning that estimate not set.
+    showWarning("No estimates were set for this Task.");
     return "No estimate";
   }
   // if valid return formatted estimate
@@ -263,4 +267,36 @@ function compareTime(timestamp) {
   let formattedTimeTaken = Math.ceil(timeTaken / 60000 / 15) * 0.25;
 
   return `Estimate: ${timestamp[2]}, Actual time: ${formattedTimeTaken}`;
+}
+
+// display a warning on the screen
+function showWarning(warningMessage) {
+  let warningDiv = document.createElement("div");
+  warningDiv.classList.add("warning");
+
+  warningDiv.innerHTML = `<strong>Warning:</strong> <p>${warningMessage}</p>`;
+
+  let body = document.querySelector("body");
+
+  body.appendChild(warningDiv);
+
+  setTimeout(() => {
+    body.removeChild(warningDiv);
+  }, 2500);
+}
+
+// display an error on the screen
+function showError(errorMessage) {
+  let errorgDiv = document.createElement("div");
+  errorgDiv.classList.add("error");
+
+  errorgDiv.innerHTML = `<strong>Error:</strong> <p>${errorMessage}</p>`;
+
+  let body = document.querySelector("body");
+
+  body.appendChild(errorgDiv);
+
+  setTimeout(() => {
+    body.removeChild(errorgDiv);
+  }, 3500);
 }
