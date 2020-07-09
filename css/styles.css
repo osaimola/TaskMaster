@@ -169,6 +169,11 @@ main > div:nth-of-type(3) {
   overflow: scroll;
 }
 
+/* Completed Task Item Styling */
+#completedtodolist > .completed-item {
+  margin-bottom: 20px;
+}
+
 /* Timestamp Styling*/
 .timestamp {
   border: 1px solid grey;
@@ -209,6 +214,7 @@ main > div:nth-of-type(3) {
   border-radius: 5px;
   padding: 6px;
   border: 1px solid grey;
+  margin-left: 5px;
 }
 
 .editbutton:hover {
