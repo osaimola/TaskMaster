@@ -1,0 +1,165 @@
+* {
+  font-family: "Ubuntu", sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+}
+
+#content {
+  background-color: tomato;
+}
+
+/* HEADER STYLING */
+header {
+  text-align: center;
+}
+header > h1 {
+  font-size: 45px;
+  font-weight: 700;
+  font-family: "Ubuntu", sans-serif;
+  color: white;
+  padding: 40px 0 25px 0;
+}
+
+/* MAIN STYLES */
+main {
+  background-color: white;
+  height: 100%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 30px 6% 0 6%; /* top, right, bottom, left */
+  box-shadow: 0px 0px 20px 4px rgba(95, 95, 95, 0.44);
+}
+
+main h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #2f506c;
+  margin-bottom: 25px;
+}
+
+/* CREATE TODO AREA STYLING */
+.create-todo {
+  padding-bottom: 40px;
+}
+
+.create-todo > label {
+  display: none;
+}
+
+.create-todo > input[type="text"] {
+  border: none;
+  font-size: 25px;
+  color: tomato;
+  margin-bottom: 20px;
+  transition: 0.08s;
+}
+
+.create-todo > input[type="text"]:focus {
+  font-weight: bold;
+  outline: none;
+}
+
+.create-todo > button {
+  padding: 16px 24px;
+  background-color: #2c79b9;
+  border-radius: 30px;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  margin: 5px auto 0 auto;
+  border: none;
+  transition: 0.75s;
+}
+
+.create-todo > button:hover {
+  background-color: #0c2340;
+}
+
+.create-todo > button:focus {
+  outline-width: 1px;
+  outline: none;
+  box-shadow: 0px 0px 6px 4px #52dbff;
+}
+
+/* CITATION: See W3 Schools for instructions to change input placeholder colors here:
+https://www.w3schools.com/howto/howto_css_placeholder.asp
+*/
+::placeholder {
+  color: tomato;
+  opacity: 0.5; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: tomato;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: tomato;
+}
+
+/* CITATION END - Change placeholder color from W3 Schools*/
+
+/* PENDING TASK AREA STYLING */
+.pending-todo {
+  padding-bottom: 40px;
+}
+
+.pending-todo > ul > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  padding-left: 12px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px 1px #bebebebf;
+}
+.pending-todo > ul > li > p {
+  padding: 8px 0;
+  display: flex;
+  font-size: 16px;
+  max-width: 200px;
+}
+.pending-todo > ul > li > button {
+  padding: 15px;
+  font-size: 14px;
+  height: 60px;
+  background-color: #73c196;
+  color: rgb(1, 70, 1);
+  font-weight: 700;
+  border: none;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  transition: 0.35s;
+}
+
+.pending-todo > ul > li > button:hover {
+  color: #73c196;
+  background-color: rgb(1, 70, 1);
+}
+
+.pending-todo > ul > li > button:focus {
+  color: #73c196;
+  background-color: rgb(1, 70, 1);
+  outline: none;
+}
+
+/* ACTIVE TASK AREA STYLING */
+.active-todo {
+  padding-bottom: 40px;
+}
+
+.active-item {
+  padding: 15px;
+  border-radius: 12px;
+  background-color: grey;
+}
+
+/* ******************************** */
+/* BREAKPOINT MAX 550PX FOR DESKTOP */
+/* ******************************** */

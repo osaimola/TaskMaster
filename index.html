@@ -10,12 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- add fonts from Gooogle -->
+    <link rel="stylesheet" href="css/stylesv2.css" />
+    <!-- start add Google Font-->
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <!-- end add Google Font-->
     <script src="js/scripts.js" defer></script>
   </head>
 
@@ -53,12 +54,15 @@
           <div class="pending-todo">
             <h2>Pending Tasks</h2>
             <ul id="pendingtodolist">
-              <!-- 
-            <li>
-          <input type="checkbox" name="vehicle1" value="vehicle1" />
-          <label for="vehicle1">Do something cool</label><br />
-        </li>
-    -->
+              <li>
+                <p>Do something cool</p>
+                <button>Start Task</button>
+              </li>
+
+              <li>
+                <p>Drink some water</p>
+                <button>Start Task</button>
+              </li>
             </ul>
           </div>
         </div>
@@ -86,7 +90,7 @@
 
         <!-- COMPLETED TODO LIST AREA-->
         <div class="completed-todo">
-          <h2>Completed Task</h2>
+          <h2>Completed Tasks</h2>
           <div id="completedtodolist">
             <div class="active-item">
               <input type="checkbox" name="vehicle1" value="vehicle1" />

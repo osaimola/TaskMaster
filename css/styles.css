@@ -7,7 +7,8 @@ p,
 li,
 label,
 input,
-button {
+button,
+strong {
   font-family: "Ubuntu", sans-serif;
 }
 
