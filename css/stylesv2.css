@@ -27,7 +27,6 @@ header > h1 {
 
 /* MAIN STYLES */
 main {
-  height: 100%;
   background-color: white;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
@@ -357,5 +356,30 @@ https://www.w3schools.com/howto/howto_css_placeholder.asp
   .active-item,
   .completed-item {
     width: 49%;
+  }
+}
+
+/* STYLING TO DISPLAY PAGE BETTER ON TALLER SCREENS */
+@media screen and (min-height: 680px) {
+  .active-todo {
+    min-height: 140px;
+  }
+  .pending-todo {
+    min-height: 140px;
+  }
+  .completed-todo {
+    min-height: 140px;
+  }
+}
+
+@media screen and (min-height: 820px) {
+  .active-todo {
+    min-height: 440px;
+  }
+  .pending-todo {
+    min-height: 240px;
+  }
+  .completed-todo {
+    min-height: 440px;
   }
 }
