@@ -5,9 +5,11 @@
 
 html,
 body {
+  height: 100%;
 }
 
 #content {
+  height: 100%;
   background-color: tomato;
 }
 
@@ -25,6 +27,7 @@ header > h1 {
 
 /* MAIN STYLES */
 main {
+  height: 100%;
   background-color: white;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
@@ -246,6 +249,113 @@ https://www.w3schools.com/howto/howto_css_placeholder.asp
   border: 1px solid black;
 }
 
+/* WARNING MESSAGE STYLING */
+
+.warning {
+  position: absolute;
+  font-family: "Ubuntu", sans-serif;
+  background-color: #f7e1aa;
+  display: flex;
+  justify-content: space-around;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  padding: 8px 20px;
+  border-radius: 10px;
+}
+
+.warning strong {
+  font-weight: bold;
+  font-size: 28px;
+  color: white;
+  margin-right: 10px;
+}
+
+.warning p {
+  font-weight: 500;
+  font-size: 24px;
+  color: #916425;
+}
+
+/* ERROR MESSAGE STYLING */
+
+.error {
+  position: absolute;
+  font-family: "Ubuntu", sans-serif;
+  background-color: #fda6a0;
+  display: flex;
+  justify-content: space-around;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  padding: 8px 20px;
+  border-radius: 10px;
+}
+
+.error strong {
+  font-weight: 700;
+  font-size: 28px;
+  color: white;
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+
+.error p {
+  font-weight: 500;
+  font-size: 24px;
+  color: #8a302c;
+}
+
 /* ******************************** */
-/* BREAKPOINT MAX 550PX FOR DESKTOP */
+/* BREAKPOINT MAX 900PX FOR DESKTOP */
 /* ******************************** */
+
+@media screen and (min-width: 900px) {
+  header {
+    padding-top: 40px;
+    padding-bottom: 25px;
+  }
+
+  main {
+    padding-top: 80px;
+  }
+
+  main > div:first-of-type {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .create-todo {
+    flex-grow: 1;
+  }
+
+  .create-todo > input[type="text"] {
+    transition: none;
+  }
+
+  .pending-todo {
+    flex-grow: 2;
+  }
+
+  .pending-todo > ul > li {
+    padding-left: 25px;
+  }
+
+  .pending-todo > ul > li > p {
+    font-size: 18px;
+    max-width: 320px;
+  }
+
+  #activetodolist,
+  #completedtodolist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .active-item,
+  .completed-item {
+    width: 49%;
+  }
+}
