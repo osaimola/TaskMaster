@@ -70,6 +70,11 @@ function startToDo(event, element) {
   newStartTime.innerText = "Start: " + todos[userInput][0].toLocaleString();
   newTimeStamp.appendChild(newStartTime);
 
+  // create a div for the checkDiv and timestamp
+  let contentDiv = document.createElement("div");
+  contentDiv.appendChild(newCheckDiv);
+  contentDiv.appendChild(newTimeStamp);
+
   // make a delete button
   let newDeleteButton = document.createElement("button");
   newDeleteButton.setAttribute("class", "deletebutton");
@@ -86,11 +91,14 @@ function startToDo(event, element) {
     editTask(event, newItem);
   });
 
+  // make a div for the buttons
+  let buttonDiv = document.createElement("div");
+  buttonDiv.appendChild(newEditButton);
+  buttonDiv.appendChild(newDeleteButton);
+
   // add the checlist to the created item
-  newItem.appendChild(newCheckDiv);
-  newItem.appendChild(newTimeStamp);
-  newItem.appendChild(newDeleteButton);
-  newItem.appendChild(newEditButton);
+  newItem.appendChild(contentDiv);
+  newItem.appendChild(buttonDiv);
 
   // add child to the active to dos
   activeToDoList.appendChild(newItem);
@@ -104,7 +112,6 @@ function completeToDo(event, element) {
 
   // add the todo completed time to timestamp
   let elementName = element.getAttribute("id");
-  let toDoStarted = todos[elementName][0];
   let toDoEnded = new Date();
   todos[elementName][1] = toDoEnded;
 
@@ -125,20 +132,20 @@ function completeToDo(event, element) {
   });
 
   // replace the old CheckDiv with one that does not have an event listener
-  element.replaceChild(
+  element.children[0].replaceChild(
     replacementCheckDiv,
-    element.querySelector("div:first-of-type")
+    element.children[0].children[0]
   );
 
   // remove the edit button
-  let editButton = element.querySelector(".editbutton");
+  let editButton = element.querySelector("div:last-of-type>.editbutton");
   editButton.parentNode.removeChild(editButton);
 
   completedToDoList.appendChild(element);
 
   // update timestamp information
-  element.querySelector(".timestamp").appendChild(newEndTime);
-  element.querySelector(".timestamp").appendChild(newTimeEvaluation);
+  element.querySelector("div>.timestamp").appendChild(newEndTime);
+  element.querySelector("div>.timestamp").appendChild(newTimeEvaluation);
 }
 
 // Delete tasks
@@ -197,9 +204,9 @@ function editTask(event, element) {
       newCheckDiv.addEventListener("click", () => {
         completeToDo(event, element);
       });
-      element.replaceChild(
+      element.children[0].replaceChild(
         newCheckDiv,
-        element.querySelector("div:first-of-type")
+        element.children[0].children[0]
       );
 
       // add the last modified value
@@ -287,16 +294,16 @@ function showWarning(warningMessage) {
 
 // display an error on the screen
 function showError(errorMessage) {
-  let errorgDiv = document.createElement("div");
-  errorgDiv.classList.add("error");
+  let errorDiv = document.createElement("div");
+  errorDiv.classList.add("error");
 
-  errorgDiv.innerHTML = `<strong>Error:</strong> <p>${errorMessage}</p>`;
+  errorDiv.innerHTML = `<strong>Error:</strong> <p>${errorMessage}</p>`;
 
   let body = document.querySelector("body");
 
-  body.appendChild(errorgDiv);
+  body.appendChild(errorDiv);
 
   setTimeout(() => {
-    body.removeChild(errorgDiv);
+    body.removeChild(errorDiv);
   }, 3500);
 }
