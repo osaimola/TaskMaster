@@ -26,7 +26,6 @@ header > h1 {
 /* MAIN STYLES */
 main {
   background-color: white;
-  height: 100%;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   padding: 30px 6% 0 6%; /* top, right, bottom, left */
@@ -150,14 +149,101 @@ https://www.w3schools.com/howto/howto_css_placeholder.asp
 }
 
 /* ACTIVE TASK AREA STYLING */
-.active-todo {
+.active-todo,
+.completed-todo {
   padding-bottom: 40px;
 }
 
-.active-item {
+.active-item,
+.completed-item {
   padding: 15px;
   border-radius: 12px;
-  background-color: grey;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  min-height: 140px;
+  margin-bottom: 40px;
+}
+
+.active-item > div:first-of-type,
+.completed-item > div:first-of-type {
+  padding-top: 15px;
+}
+
+.active-item > div > div,
+.completed-item > div > div {
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+.active-item > div > div > label,
+.completed-item > div > div > label {
+  font-weight: 700;
+  color: #6b6b6b;
+  font-size: 20px;
+}
+
+.timestamp > p {
+  font-family: "Source Code Pro", monospace;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* BUTTON DIV AREA STYLING */
+.active-item > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.completed-item > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* BUTTON STYLING */
+.editbutton {
+  background-color: #5bc0de;
+  color: white;
+  border-radius: 16px;
+  padding: 14px;
+  border: none;
+  width: 72px;
+  transition: 0.3s;
+}
+
+.editbutton:hover {
+  color: #5bc0de;
+  background-color: #f0f0f0;
+}
+
+.editbutton:focus {
+  color: #34778b;
+  background-color: #bbbbbb;
+  border: 1px solid black;
+}
+
+.deletebutton {
+  background-color: #d9534f;
+  color: white;
+  font-weight: 700;
+  width: 72px;
+  border-radius: 16px;
+  padding: 14px;
+  border: none;
+  transition: 0.3s;
+}
+
+.deletebutton:hover {
+  color: #d9534f;
+  background-color: #f0f0f0;
+}
+
+.deletebutton:focus {
+  color: #d9534f;
+  background-color: #bbbbbb;
+  border: 1px solid black;
 }
 
 /* ******************************** */

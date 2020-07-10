@@ -78,7 +78,7 @@ function startToDo(event, element) {
   // make a delete button
   let newDeleteButton = document.createElement("button");
   newDeleteButton.setAttribute("class", "deletebutton");
-  newDeleteButton.innerText = "X";
+  newDeleteButton.innerText = "Delete";
   newDeleteButton.addEventListener("click", () => {
     deleteToDo(event, newItem);
   });
@@ -211,11 +211,10 @@ function editTask(event, element) {
 
       // add the last modified value
       let lastModifiedTime = document.createElement("p");
-      lastModifiedTime.innerText =
-        "Last Modified: " + new Date().toLocaleString();
+      lastModifiedTime.innerText = "Modified: " + new Date().toLocaleString();
       let timestamp = element.querySelector(".timestamp>p:last-of-type");
       // if previously modified, update last modified time
-      if (timestamp.innerText.startsWith("Last Modified:")) {
+      if (timestamp.innerText.startsWith("Modified:")) {
         // see more about startsWith here: https://www.w3schools.com/jsref/jsref_startswith.asp
         timestamp.parentNode.replaceChild(lastModifiedTime, timestamp);
       }
@@ -235,7 +234,7 @@ function formatEstimate(userEstimate) {
   if (isNaN(parseFloat(userEstimate))) {
     // TODO : not a valid entry. display warning that estimate not set.
     showWarning("No estimates were set for this Task.");
-    return "No estimate";
+    return "None";
   }
   // if valid return formatted estimate
   else {
@@ -252,11 +251,11 @@ function formatEstimate(userEstimate) {
 
     let roundingFactor; // we will use this to round up after the decimal
 
-    if (userFloat % 1 < 0.25) {
+    if (userFloat % 1 <= 0.25) {
       roundingFactor = 0.25;
-    } else if (userFloat % 1 < 0.5) {
+    } else if (userFloat % 1 <= 0.5) {
       roundingFactor = 0.5;
-    } else if (userFloat % 1 < 0.75) {
+    } else if (userFloat % 1 <= 0.75) {
       roundingFactor = 0.75;
     } else {
       roundingFactor = 1;
