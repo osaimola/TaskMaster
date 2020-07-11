@@ -251,7 +251,7 @@ https://www.w3schools.com/howto/howto_css_placeholder.asp
 /* WARNING MESSAGE STYLING */
 
 .warning {
-  position: absolute;
+  position: fixed;
   font-family: "Ubuntu", sans-serif;
   background-color: #f7e1aa;
   display: flex;
@@ -279,7 +279,7 @@ https://www.w3schools.com/howto/howto_css_placeholder.asp
 /* ERROR MESSAGE STYLING */
 
 .error {
-  position: absolute;
+  position: fixed;
   font-family: "Ubuntu", sans-serif;
   background-color: #fda6a0;
   display: flex;
