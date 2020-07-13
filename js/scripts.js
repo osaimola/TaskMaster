@@ -271,8 +271,19 @@ function compareTime(timestamp) {
   // caluclate time taken in milliseconds and then convert to .25, .5, .75, .0 hour scale
   let timeTaken = timestamp[1] - timestamp[0];
   let formattedTimeTaken = Math.ceil(timeTaken / 60000 / 15) * 0.25;
+  let timeDifference = timestamp[2] - formattedTimeTaken;
 
-  return `Estimate: ${timestamp[2]}, Actual time: ${formattedTimeTaken}`;
+  if (timestamp[2] == "None") {
+    return `Estimate: ${timestamp[2]}, Actual time: ${formattedTimeTaken}`;
+  } else {
+    if (timeDifference == 0) {
+      return `Great! Completed in exactly ${timestamp[2]} hour(s)!`;
+    } else if (timeDifference < 0) {
+      return `Completed in ${timeDifference} hour(s) more than ${timestamp} estimate.`;
+    } else {
+      return `Awesome! Completed in ${formattedTimeTaken} with ${timeDifference} hour(s) to spare!`;
+    }
+  }
 }
 
 // display a warning on the screen

@@ -131,7 +131,7 @@ https://www.w3schools.com/howto/howto_css_placeholder.asp
   font-size: 14px;
   height: 60px;
   background-color: #73c196;
-  color: rgb(1, 70, 1);
+  color: #ffffff;
   font-weight: 700;
   border: none;
   border-bottom-right-radius: 12px;
@@ -140,13 +140,13 @@ https://www.w3schools.com/howto/howto_css_placeholder.asp
 }
 
 .pending-todo > ul > li > button:hover {
-  color: #73c196;
-  background-color: rgb(1, 70, 1);
+  color: #ffffff;
+  background-color: rgb(3, 91, 3);
 }
 
 .pending-todo > ul > li > button:focus {
-  color: #73c196;
-  background-color: rgb(1, 70, 1);
+  color: #ffffff;
+  background-color: rgb(3, 91, 3);
   outline: none;
 }
 
