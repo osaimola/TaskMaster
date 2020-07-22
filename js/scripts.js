@@ -4,45 +4,44 @@ const submitButton = document.getElementById("submittask");
 const pendingToDoList = document.querySelector(".pending-todo>ul");
 const activeToDoList = document.querySelector("#activetodolist");
 const completedToDoList = document.querySelector("#completedtodolist");
+
 // dictionary will store {"todo item" : [start time, end time, estimated time]}
 const todos = {};
 
-// APPENDING A CHILD THAT EXISTS UNDER ONE PARENT TO ANOTHER PARENT SHOULD MOVE IT TO THe NEW PARENT
-
 submitButton.addEventListener("click", addPendingToDo);
 
-// GEt user input from the new task form and create a new Pending to do
+// Get user input from the new task form and create a new Pending to do
 function addPendingToDo(event) {
   event.preventDefault();
 
   let userInput = inputField.value.trim();
   let userEstimate = estimateField.value.trim();
-  // TODO : check if input exists in todos and prevent duplicate items from being added
+
+  // if input exists in the todos dictionary, prevent duplicate items from being added
   if (userInput === "" || userInput in todos) {
-    // TODO : provide visual feedback about bad input
+    // provide visual feedback about bad input
     showError("Only unique names are allowed for tasks. Please try again.");
-    return;
+  } else {
+    inputField.value = null;
+    estimateField.value = null;
+    todos[userInput] = [0, 0, formatEstimate(userEstimate)];
+
+    let pendingTaskContent = document.createElement("p");
+    pendingTaskContent.innerText = userInput;
+
+    let startTaskButton = document.createElement("button");
+    startTaskButton.innerText = "Start Task";
+
+    let newPendingItem = document.createElement("li");
+    newPendingItem.appendChild(pendingTaskContent);
+    newPendingItem.appendChild(startTaskButton);
+
+    startTaskButton.addEventListener("click", () => {
+      startToDo(event, newPendingItem);
+    });
+
+    pendingToDoList.appendChild(newPendingItem);
   }
-
-  inputField.value = null;
-  estimateField.value = null;
-  todos[userInput] = [0, 0, formatEstimate(userEstimate)];
-
-  let pendingTaskContent = document.createElement("p");
-  pendingTaskContent.innerText = userInput;
-
-  let startTaskButton = document.createElement("button");
-  startTaskButton.innerText = "Start Task";
-
-  let newPendingItem = document.createElement("li");
-  newPendingItem.appendChild(pendingTaskContent);
-  newPendingItem.appendChild(startTaskButton);
-
-  startTaskButton.addEventListener("click", () => {
-    startToDo(event, newPendingItem);
-  });
-
-  pendingToDoList.appendChild(newPendingItem);
 }
 
 // Get user input from the new task form and create a new TO DO ITEM
